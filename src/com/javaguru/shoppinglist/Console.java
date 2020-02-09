@@ -37,7 +37,7 @@ public class Console {
         System.out.println(product);
     }
 
-    private void createProduct() {
+    private void createProduct() throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, Enter product name: ");
         String name = scanner.nextLine();

@@ -6,6 +6,6 @@ class ShoppingListApplication {
 
     public static void main(String[] args) {
         Console console = new Console();
-        Console.made();
+        console.made();
     }
 }

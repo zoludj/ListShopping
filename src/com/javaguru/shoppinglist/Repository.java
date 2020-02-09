@@ -1,20 +1,21 @@
 package com.javaguru.shoppinglist;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Repository {
 
-    public class ProductService {
-        private Repository repository = new Repository();
-        private ProductValidateService service = new ProductValidateService();
+    private Long PRODUCT_ID_SEQUENCE = 0L;
+    private Map<Long, Product> products = new HashMap<>();
 
-        public Long createProduct(Product product) {
-            service.validate(product);
-            Product createdProduct = repository.insert(product);
-            return createdProduct.getId();
+
+    public Product insert(Product product) throws Exception {
+        product.setId(PRODUCT_ID_SEQUENCE);
+        if (products.entrySet().stream().anyMatch(p -> p.getValue().getName().equals(product.getName()))) {
+            throw new Exception("name uniqueness violation");
         }
-
-    }
-
-    Product insert(Product product) {
+        products.put(PRODUCT_ID_SEQUENCE, product);
+        PRODUCT_ID_SEQUENCE++;
         return product;
     }
 }
