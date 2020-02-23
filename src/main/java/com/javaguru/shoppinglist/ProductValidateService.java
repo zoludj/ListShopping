@@ -1,17 +1,16 @@
 package com.javaguru.shoppinglist;
 
+import java.util.List;
+
 public class ProductValidateService {
-    public void validate(Product product) {
+    private List<ProductValidatorRule> rules;
+
+    public ProductValidateService(List<ProductValidatorRule> rules) {
+        this.rules = rules;
     }
-
-    public class ProductService {
-        private Repository repository = new Repository();
-        private ProductValidateService service = new ProductValidateService();
-
-        public Long createProduct(Product product) throws Exception {
-            service.validate(product);
-            Product createdProduct = repository.insert(product);
-            return createdProduct.getId();
+    public void validate(Product product) throws Exception {
+        for (ProductValidatorRule productValidatorRule : rules) {
+            productValidatorRule.validate(product);
         }
     }
 }

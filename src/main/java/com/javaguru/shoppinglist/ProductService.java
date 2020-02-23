@@ -1,8 +1,13 @@
 package com.javaguru.shoppinglist;
 
 public class ProductService {
-    private Repository repository = new Repository();
-    private ProductValidateService service = new ProductValidateService();
+    private Repository repository;
+    private ProductValidateService service;
+
+    public ProductService(Repository repository, ProductValidateService service) {
+        this.repository = repository;
+        this.service = service;
+    }
 
     public Long createProduct(Product product) throws Exception {
         service.validate(product);

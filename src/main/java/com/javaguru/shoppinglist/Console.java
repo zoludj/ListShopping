@@ -1,9 +1,21 @@
 package com.javaguru.shoppinglist;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Console {
-    private ProductService productService = new ProductService();
+    private ProductService productService;
+
+    public Console() {
+        List <ProductValidatorRule> rules = new ArrayList<>();
+        rules.add(new DiscountValidatorRule());
+        rules.add(new NameValidatorRule());
+        rules.add(new PriceValidatorRule());
+        rules.add(new ValidatorRulePriceDiscount());
+        this.productService = new ProductService(new Repository(), new ProductValidateService(rules));
+    }
 
     public void made() {
         while (true) {
