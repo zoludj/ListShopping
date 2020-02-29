@@ -1,10 +1,14 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-class ShoppingListApplication {
+
+public class ShoppingListApplication {
 
     public static void main(String[] args) {
-  Console console = new Console();
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        Console console = ctx.getBean(Console.class);
         console.made();
     }
 }

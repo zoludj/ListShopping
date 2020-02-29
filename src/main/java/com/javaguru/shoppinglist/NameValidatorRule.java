@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NameValidatorRule implements ProductValidatorRule {
     public void validate(Product product) throws Exception {
         String name = product.getName();

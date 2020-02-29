@@ -1,7 +1,10 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class ProductValidateService {
     private List<ProductValidatorRule> rules;
 

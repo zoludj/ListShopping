@@ -1,10 +1,14 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.stereotype.Component;
+
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class Console {
     private ProductService productService;
 
@@ -24,15 +28,15 @@ public class Console {
                 System.out.println("1. Create product");
                 System.out.println("2. Find product by id");
                 System.out.println("3. Exit");
-                Integer userInput = Integer.valueOf(scanner.nextLine());
+                String userInput = scanner.nextLine();
                 switch (userInput) {
-                    case 1:
+                    case "1":
                         createProduct();
                         break;
-                    case 2:
+                    case "2":
                         findProduct();
                         break;
-                    case 3:
+                    case "3":
                         break;
                 }
             } catch (Exception e) {
@@ -55,11 +59,15 @@ public class Console {
         String name = scanner.nextLine();
         System.out.println("Please, Enter product info: ");
         String info = scanner.nextLine();
-
+        System.out.println("Please, enter product price");
+        BigDecimal price = scanner.nextBigDecimal();
+        System.out.println("Please, enter product discount");
+        BigDecimal discount = scanner.nextBigDecimal();
         Product product = new Product();
         product.setName(name);
         product.setInfo(info);
-
+        product.setPrice(price);
+        product.setDiscount(discount);
         productService.createProduct(product);
         System.out.println("Created");
     }

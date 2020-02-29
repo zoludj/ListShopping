@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProductService {
     private Repository repository;
     private ProductValidateService service;
@@ -16,6 +19,6 @@ public class ProductService {
     }
 
     public Product findProductById(Long id) {
-        return null;
+       return repository.findById(id);
     }
 }

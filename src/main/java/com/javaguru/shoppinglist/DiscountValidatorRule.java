@@ -1,7 +1,9 @@
 package com.javaguru.shoppinglist;
 
-import java.math.BigDecimal;
+import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+@Component
 public class DiscountValidatorRule implements ProductValidatorRule{
     public void validate (Product product) throws Exception {
         BigDecimal discount = product.getDiscount();
