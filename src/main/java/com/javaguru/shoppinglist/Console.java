@@ -1,25 +1,21 @@
 package com.javaguru.shoppinglist;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Optional;
 import java.util.Scanner;
 
 @Component
 public class Console {
     private ProductService productService;
 
-    public Console() {
-        List <ProductValidatorRule> rules = new ArrayList<>();
-        rules.add(new DiscountValidatorRule());
-        rules.add(new NameValidatorRule());
-        rules.add(new PriceValidatorRule());
-        rules.add(new ValidatorRulePriceDiscount());
-        this.productService = new ProductService(new Repository(), new ProductValidateService(rules));
+    public Console(ProductService productService) {
+        this.productService = productService;
     }
+
 
     public void made() {
         while (true) {
@@ -40,7 +36,7 @@ public class Console {
                         break;
                 }
             } catch (Exception e) {
-                System.out.println("Error! Please try again.");
+                System.out.println(e);
             }
         }
     }
@@ -49,7 +45,7 @@ public class Console {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, Enter product id: ");
         Long id = scanner.nextLong();
-        Product product = productService.findProductById(id);
+        Optional<Product> product = productService.findProductById(id);
         System.out.println(product);
     }
 
@@ -63,6 +59,7 @@ public class Console {
         BigDecimal price = scanner.nextBigDecimal();
         System.out.println("Please, enter product discount");
         BigDecimal discount = scanner.nextBigDecimal();
+
         Product product = new Product();
         product.setName(name);
         product.setInfo(info);
