@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

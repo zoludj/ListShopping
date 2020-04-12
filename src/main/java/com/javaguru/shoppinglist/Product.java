@@ -1,28 +1,66 @@
 package com.javaguru.shoppinglist;
 
+
 import java.math.BigDecimal;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "products")
 public class Product {
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name", unique = true)
     private String name;
-    private BigDecimal price;
-    private String category;
-    private BigDecimal discount;
+    @Column(name = "info")
     private String info;
+    @Column(name = "price")
+    BigDecimal price;
+    @Column(name = "discount")
+    BigDecimal discount;
 
-    public String getCategory() { return category; }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(info, product.info) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(discount, product.discount);
 
-    public void setCategory(String category) { this.category = category; }
+    }
 
-    public BigDecimal getDiscount() { return discount; }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, info, price, discount);
+    }
 
-    public void setDiscount(BigDecimal discount) { this.discount = discount; }
 
-    public String getInfo() { return info; }
+    public BigDecimal getDiscount() {
+        return discount;
+    }
 
-    public void setInfo(String info) { this.info = info; }
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
 
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public Long getId() {
         return id;
@@ -55,7 +93,6 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", category='" + category + '\'' +
                 ", discount=" + discount +
                 ", info='" + info + '\'' +
                 '}';

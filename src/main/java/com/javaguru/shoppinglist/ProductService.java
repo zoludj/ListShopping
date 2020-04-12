@@ -1,30 +1,32 @@
 package com.javaguru.shoppinglist;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 
 @Service
 public class ProductService {
-    private AbstractRepository repository;
-    private ProductValidateService service;
-
-    public ProductService(AbstractRepository repository, ProductValidateService service) {
+    private final AbstractRepository repository;
+    private final ProductValidateService validateService;
+@Autowired
+    public ProductService(AbstractRepository repository, ProductValidateService validateService) {
         this.repository = repository;
-        this.service = service;
-}
-
+        this.validateService = validateService;
+    }
 
 
     public Long createProduct(Product product) throws Exception {
-        service.validate(product);
-        Product createdProduct = repository.save(product);
-        return createdProduct.getId();
+        validateService.validate(product);
+        Long createdProduct = repository.save(product);
+        return createdProduct;
     }
 
-        Optional<Product> findProductById(Long id) {
-            return repository.findProductById(id);
-        }
+    Optional<Product> findProductById(Long id) {
+        return repository.findProductById(id);
     }
 
+
+}
