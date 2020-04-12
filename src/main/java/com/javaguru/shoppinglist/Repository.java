@@ -2,13 +2,11 @@ package com.javaguru.shoppinglist;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
+
 import javax.transaction.Transactional;
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-@Profile("hibernate")
 @Transactional
 
 public class Repository implements AbstractRepository {
