@@ -45,7 +45,7 @@ public class Console {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, Enter product id: ");
         Long id = scanner.nextLong();
-        Optional<Product> product = productService.findProductById(id);
+        Optional<Product> product = Optional.ofNullable(productService.findProductById(id));
         System.out.println(product);
     }
 

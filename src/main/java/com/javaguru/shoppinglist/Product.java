@@ -27,6 +27,7 @@ public class Product {
     @Column(name = "discount")
     BigDecimal discount;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

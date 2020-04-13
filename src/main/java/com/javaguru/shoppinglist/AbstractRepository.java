@@ -8,5 +8,4 @@ public interface AbstractRepository {
     public Optional<Product> findProductByName(String name);
     public Long save(Product product);
     void delete(Product product);
-
 }
