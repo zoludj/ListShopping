@@ -51,7 +51,8 @@ public class ApplicationConfiguration {
             @Value("${hibernate.dialect}") String dialect,
             @Value("${hibernate.show_sql}") boolean showSql,
             @Value("${hibernate.format_sql}") boolean formatSql,
-            @Value("${hibernate.hbm2ddl.auto}") String hbm2ddl) {
+            @Value("${hibernate.hbm2ddl.auto}") String hbm2ddl)
+   {
 
 
         Properties properties = new Properties();
