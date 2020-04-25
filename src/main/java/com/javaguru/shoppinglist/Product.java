@@ -3,12 +3,7 @@ package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -18,7 +13,7 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", unique = true)
+    @Column(name = "cart_name", unique = true)
     private String name;
     @Column(name = "info")
     private String info;
@@ -28,23 +23,9 @@ public class Product {
     BigDecimal discount;
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id) &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(info, product.info) &&
-                Objects.equals(price, product.price) &&
-                Objects.equals(discount, product.discount);
 
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, info, price, discount);
-    }
+
 
 
     public BigDecimal getDiscount() {
@@ -98,4 +79,23 @@ public class Product {
                 ", info='" + info + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(info, product.info) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(discount, product.discount);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, info, price, discount);
+    }
+
+
 }

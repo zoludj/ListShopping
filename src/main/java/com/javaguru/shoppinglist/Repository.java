@@ -27,6 +27,11 @@ public class Repository implements AbstractRepository {
     }
 
     @Override
+    public void deleteProductById(Product product) {
+
+    }
+
+    @Override
     public Optional<Product> findProductById(Long id) {
         Product product = (Product)sessionFactory.getCurrentSession().createCriteria(Product.class)
                 .add(Restrictions.eq("id", id))

@@ -7,5 +7,6 @@ public interface AbstractRepository {
     public boolean  existsByName(String name);
     public Optional<Product> findProductByName(String name);
     public Long save(Product product);
+    public void deleteProductById(Product product);
     void delete(Product product);
 }

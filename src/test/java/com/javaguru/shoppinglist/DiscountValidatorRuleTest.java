@@ -6,8 +6,6 @@ import org.junit.rules.ExpectedException;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
-
 public class DiscountValidatorRuleTest {
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();

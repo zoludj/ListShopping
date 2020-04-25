@@ -1,13 +1,10 @@
 package com.javaguru.shoppinglist;
 
-
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-
 import java.util.Optional;
 import java.util.Scanner;
-
 @Component
 public class Console {
     private ProductService productService;
@@ -16,7 +13,6 @@ public class Console {
         this.productService = productService;
     }
 
-
     public void made() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -24,34 +20,25 @@ public class Console {
                 System.out.println("1. Create product");
                 System.out.println("2. Find product by id");
                 System.out.println("3. Exit");
-                String userInput = scanner.nextLine();
+                Integer userInput = Integer.valueOf(scanner.nextLine());
                 switch (userInput) {
-                    case "1":
-                        createProduct();
+                    case 1:
+                        createProduct(scanner);
                         break;
-                    case "2":
+                    case 2:
                         findProduct();
                         break;
-                    case "3":
+                    case 3:
                         break;
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println("Error! Please try again.");
             }
         }
     }
 
-    private void findProduct() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, Enter product id: ");
-        Long id = scanner.nextLong();
-        Optional<Product> product = Optional.ofNullable(productService.findProductById(id));
-        System.out.println(product);
-    }
-
-    private void createProduct() throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, Enter product name: ");
+    private void createProduct(Scanner scanner) throws Exception {
+        System.out.println("Please, enter product name");
         String name = scanner.nextLine();
         System.out.println("Please, Enter product info: ");
         String info = scanner.nextLine();
@@ -68,4 +55,13 @@ public class Console {
         productService.createProduct(product);
         System.out.println("Created");
     }
+    
+    private void findProduct() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please, Enter product id: ");
+        Long id = scanner.nextLong();
+        Optional<Product> product = Optional.ofNullable(productService.findProductById(id));
+        System.out.println(product);
+    }
+   
 }
