@@ -1,6 +1,9 @@
 
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.entity.Product;
+import com.javaguru.shoppinglist.validator.NameValidatorRule;
+import com.javaguru.shoppinglist.validator.ProductValidatorRule;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

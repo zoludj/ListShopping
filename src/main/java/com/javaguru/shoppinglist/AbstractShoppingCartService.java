@@ -1,13 +1,18 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
+import com.javaguru.shoppinglist.entity.ShoppingCart;
+
 import java.math.BigDecimal;
-import java.util.Optional;
 
 public interface AbstractShoppingCartService {
-    public Long createCart(ShoppingCart shoppingCart);
-    public Optional<ShoppingCart> getCartById(Long id);
-    public void deleteCartById(Long id);
-    public void addProductToCar(Long cartId, Long productId);
+
+    Long createOrUpdateCart(ShoppingCartDTO shoppingCartDTO);
+
+    ShoppingCartDTO getCartById(Long id);
+
+    void deleteCartById(Long id);
+
     BigDecimal calculateSum(long cartId);
 
 }

@@ -1,5 +1,7 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.entity.Product;
+import com.javaguru.shoppinglist.validator.PriceValidatorRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

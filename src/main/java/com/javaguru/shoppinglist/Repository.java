@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.entity.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 

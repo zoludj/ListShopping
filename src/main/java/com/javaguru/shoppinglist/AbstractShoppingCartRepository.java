@@ -1,13 +1,16 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.entity.ShoppingCart;
+
 import java.util.List;
 import java.util.Optional;
 
-public interface AbstractShoppingCartRepository {
-    public Long save (ShoppingCart shoppingCart);
-    public Optional<ShoppingCart> findById(Long id);
-    public List<ShoppingCart> findAll();
-    public void delete(ShoppingCart shoppingCart);
+ interface AbstractShoppingCartRepository {
+    Long save (ShoppingCart shoppingCart);
+    Optional<ShoppingCart> findById(Long id);
+     List<ShoppingCart> findAll();
+     void delete(ShoppingCart shoppingCart);
+
 
 
 }

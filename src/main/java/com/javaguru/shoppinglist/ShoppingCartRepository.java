@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.entity.ShoppingCart;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ public class ShoppingCartRepository implements AbstractShoppingCartRepository  {
 
 @Override
     public Long save(ShoppingCart shoppingCart) {
-        sessionFactory.getCurrentSession().save(shoppingCart);
+        sessionFactory.getCurrentSession().saveOrUpdate(shoppingCart);
         return shoppingCart.getId();
     }
 

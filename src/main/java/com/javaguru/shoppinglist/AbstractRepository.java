@@ -1,7 +1,9 @@
 package com.javaguru.shoppinglist;
+import com.javaguru.shoppinglist.entity.Product;
+
 import java.util.Optional;
 
-public interface AbstractRepository {
+ interface AbstractRepository {
 
     Optional <Product> findProductById(Long id);
     public boolean  existsByName(String name);
