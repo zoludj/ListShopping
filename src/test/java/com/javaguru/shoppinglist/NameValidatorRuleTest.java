@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.entity.Product;
 import com.javaguru.shoppinglist.validator.NameValidatorRule;
 import org.junit.Rule;
@@ -18,7 +19,7 @@ public class NameValidatorRuleTest {
 
     @Test
     public void anSuccess() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setName("a");
         expectedException.expect(Exception.class);
         expectedException.expectMessage("Name will can not be less 3 words and more 32 words");
@@ -26,7 +27,7 @@ public class NameValidatorRuleTest {
     }
     @Test
     public void success() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
        nameValidatorRule.validate(product);
     }

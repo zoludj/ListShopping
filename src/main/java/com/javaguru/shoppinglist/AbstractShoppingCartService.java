@@ -1,9 +1,9 @@
 package com.javaguru.shoppinglist;
 
 import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
-import com.javaguru.shoppinglist.entity.ShoppingCart;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface AbstractShoppingCartService {
 
@@ -15,4 +15,5 @@ public interface AbstractShoppingCartService {
 
     BigDecimal calculateSum(long cartId);
 
+    List<ShoppingCartDTO> findAllCarts();
 }

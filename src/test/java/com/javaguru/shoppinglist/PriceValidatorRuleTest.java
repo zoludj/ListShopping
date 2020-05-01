@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.entity.Product;
 import com.javaguru.shoppinglist.validator.PriceValidatorRule;
 import org.junit.Rule;
@@ -15,7 +16,7 @@ public class PriceValidatorRuleTest {
 
     @Test
     public void anSuccess() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setPrice(new BigDecimal(-10));
         expectedException.expect(Exception.class);
         expectedException.expectMessage("Price will be more 0");
@@ -24,7 +25,7 @@ public class PriceValidatorRuleTest {
 
     @Test
     public void success() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setPrice(new BigDecimal(10));
         priceValidatorRule.validate(product);
     }

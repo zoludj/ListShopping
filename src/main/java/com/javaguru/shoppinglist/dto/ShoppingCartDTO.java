@@ -1,7 +1,6 @@
 package com.javaguru.shoppinglist.dto;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.List;
@@ -9,8 +8,8 @@ import java.util.Objects;
 
 public class ShoppingCartDTO {
 
-    @NotNull(groups = {Update.class}, message = "Īd should be not null")
-    @Null(groups = {Create.class}, message = "Īd should be null")
+    @NotNull(groups = {Update.class}, message = "Id should be not null")
+    @Null(groups = {Create.class}, message = "Id should be null")
     private Long id;
     @NotEmpty(groups = {Update.class, Create.class}, message = "Ņame should be not empty")
     private String name;

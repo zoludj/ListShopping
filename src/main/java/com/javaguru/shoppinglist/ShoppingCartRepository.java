@@ -5,11 +5,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ShoppingCartRepository implements AbstractShoppingCartRepository  {
+
+public class ShoppingCartRepository implements AbstractShoppingCartRepository {
     private final SessionFactory sessionFactory;
 
     public ShoppingCartRepository(SessionFactory sessionFactory) {
@@ -17,25 +19,27 @@ public class ShoppingCartRepository implements AbstractShoppingCartRepository  {
     }
 
 
-@Override
+    @Override
     public Long save(ShoppingCart shoppingCart) {
         sessionFactory.getCurrentSession().saveOrUpdate(shoppingCart);
         return shoppingCart.getId();
     }
 
-@Override
+    @Override
     public Optional<ShoppingCart> findById(Long id) {
-        ShoppingCart shoppingCart = (ShoppingCart)sessionFactory.getCurrentSession().createCriteria(ShoppingCart.class)
+        ShoppingCart shoppingCart = (ShoppingCart) sessionFactory.getCurrentSession().createCriteria(ShoppingCart.class)
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
         return Optional.ofNullable(shoppingCart);
     }
 
-@Override
+    @Override
     public List<ShoppingCart> findAll() {
         return sessionFactory.getCurrentSession().createCriteria(ShoppingCart.class).list();
     }
-@Override
+
+
+    @Override
     public void delete(ShoppingCart shoppingCart) {
         sessionFactory.getCurrentSession().delete(shoppingCart);
 

@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist;
 
-import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.entity.Product;
 import com.javaguru.shoppinglist.validator.*;
 import org.springframework.stereotype.Component;
@@ -22,7 +21,7 @@ public class ProductValidateService {
     }
 
 
-    public void validate(ProductDTO productDTO) throws Exception {
+    public void validate(Product productDTO) throws Exception {
         for (ProductValidatorRule productValidatorRule : rules) {
             productValidatorRule.validate(productDTO);
         }

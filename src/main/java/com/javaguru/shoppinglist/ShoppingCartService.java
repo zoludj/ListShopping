@@ -5,9 +5,13 @@ import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
 import com.javaguru.shoppinglist.entity.ShoppingCart;
 import org.springframework.stereotype.Service;
 
+
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+
 public class ShoppingCartService implements AbstractShoppingCartService {
 
     private final AbstractShoppingCartRepository repository;
@@ -44,6 +48,12 @@ public class ShoppingCartService implements AbstractShoppingCartService {
         return shoppingCart.getProducts().stream()
                 .map(product -> product.getPrice().subtract(product.getDiscount()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    @Override
+    public List<ShoppingCartDTO> findAllCarts() {
+        return repository.findAll().stream().map(shoppingCart -> shoppingCartConverter.convert(shoppingCart))
+                .collect(Collectors.toList());
     }
 
 }

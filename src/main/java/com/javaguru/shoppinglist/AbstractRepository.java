@@ -11,4 +11,5 @@ import java.util.Optional;
     public Long save(Product product);
     public void deleteProductById(Product product);
     void delete(Product product);
-}
+     void update(Product product);
+ }

@@ -4,11 +4,11 @@ import com.javaguru.shoppinglist.entity.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import javax.transaction.Transactional;
+
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-@Transactional
+
 
 public class Repository implements AbstractRepository {
 
@@ -62,5 +62,11 @@ public class Repository implements AbstractRepository {
     }
     public void delete(Product product){
         sessionFactory.getCurrentSession().delete(product);
+    }
+
+    @Override
+    public void update(Product product) {
+        sessionFactory.getCurrentSession().update(product);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.entity.Product;
 import com.javaguru.shoppinglist.validator.DiscountValidatorRule;
 import org.junit.Rule;
@@ -15,7 +16,7 @@ public class DiscountValidatorRuleTest {
 
     @Test
     public void anSuccess() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setDiscount(new BigDecimal(-20));
         expectedException.expect(Exception.class);
         expectedException.expectMessage("Discount will can not be less 0");
@@ -25,7 +26,7 @@ public class DiscountValidatorRuleTest {
 
     @Test
     public void Success() throws Exception {
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setDiscount(new BigDecimal(20));
         discountValidatorRule.validate(product);
     }

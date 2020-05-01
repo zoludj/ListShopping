@@ -18,7 +18,7 @@ public class ProductConverter {
         return productDTO;
     }
 
-    public Product convert(ProductDTO productDTO) {
+    public static Product convert(ProductDTO productDTO) {
         Product product =new Product();
         product.setId(productDTO.getId());
         product.setName(productDTO.getName());

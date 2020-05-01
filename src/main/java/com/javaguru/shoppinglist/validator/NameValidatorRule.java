@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.validator;
 
 import com.javaguru.shoppinglist.dto.ProductDTO;
+import com.javaguru.shoppinglist.entity.Product;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,5 +11,10 @@ public class NameValidatorRule implements ProductValidatorRule {
         if (name.length() < 3 || name.length() > 32) {
             throw new Exception("Name will can not be less 3 words and more 32 words");
         }
+    }
+
+    @Override
+    public void validate(Product capture) {
+
     }
 }
